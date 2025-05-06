@@ -185,7 +185,7 @@ fig_city_pie = px.pie(
     hole=0.4,
 )
 fig_city_pie.update_traces(textinfo='value', pull=[0.05]*5)
-fig_city_pie.update_layout(height=450, plot_bgcolor="#ebdef0", paper_bgcolor="#ebdef0")
+fig_city_pie.update_layout(height=400, plot_bgcolor="#ebdef0", paper_bgcolor="#ebdef0")
 
 # Top 5 Networks Pie Chart
 
@@ -196,8 +196,8 @@ fig_network_pie = px.pie(
     values="Station Count",
     hole=0.4,
 )
-fig_network_pie.update_traces(textinfo='value+label', pull=[0.05]*5)
-fig_network_pie.update_layout(height=450, plot_bgcolor="#fdf2e9", paper_bgcolor="#fdf2e9")
+fig_network_pie.update_traces(textinfo='value', pull=[0.05]*5)
+fig_network_pie.update_layout(height=400, plot_bgcolor="#fdf2e9", paper_bgcolor="#fdf2e9")
 
 # Display pie charts side-by-side
 col1, col2 = st.columns(2)
