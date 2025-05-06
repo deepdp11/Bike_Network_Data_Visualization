@@ -184,7 +184,7 @@ fig_city_pie = px.pie(
     names="City",
     hole=0.4,
 )
-fig_city_pie.update_traces(textinfo='value+label', pull=[0.05]*5)
+fig_city_pie.update_traces(textinfo='value', pull=[0.05]*5)
 fig_city_pie.update_layout(height=450, plot_bgcolor="#ebdef0", paper_bgcolor="#ebdef0")
 
 # Top 5 Networks Pie Chart
