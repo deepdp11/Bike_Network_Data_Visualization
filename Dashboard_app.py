@@ -170,43 +170,43 @@ with col4:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-
-# Top 5 Cities Pie Chart
-top_5_cities = (
-    df.groupby("City", as_index=False)["Station Count"]
-    .sum()
-    .sort_values("Station Count", ascending=False)
-    .head(5)
-)
-fig_city_pie = px.pie(
-    top_5_cities,
-    values="Station Count",
-    names="City",
-    hole=0.4,
-)
-fig_city_pie.update_traces(textinfo='value', pull=[0.05]*5)
-fig_city_pie.update_layout(height=400, plot_bgcolor="#ebdef0", paper_bgcolor="#ebdef0")
-
-# Top 5 Networks Pie Chart
-
-top_5_networks = df.sort_values("Station Count", ascending=False).head(5)
-fig_network_pie = px.pie(
-    top_5_networks,
-    names="Network_id",
-    values="Station Count",
-    hole=0.4,
-)
-fig_network_pie.update_traces(textinfo='value', pull=[0.05]*5)
-fig_network_pie.update_layout(height=400, plot_bgcolor="#fdf2e9", paper_bgcolor="#fdf2e9")
-
 # Display pie charts side-by-side
 col1, col2 = st.columns(2)
 with col1:
+    
+    # Top 5 Cities Pie Chart
+    top_5_cities = (
+        df.groupby("City", as_index=False)["Station Count"]
+        .sum()
+        .sort_values("Station Count", ascending=False)
+        .head(5)
+    )
+    fig_city_pie = px.pie(
+        top_5_cities,
+        values="Station Count",
+        names="City",
+        hole=0.4,
+    )
+    fig_city_pie.update_traces(textinfo='value', pull=[0.05]*5)
+    fig_city_pie.update_layout(height=400, plot_bgcolor="#ebdef0", paper_bgcolor="#ebdef0")
+    
     city_pie_title = (f"🏙️ Top Cities by Number of Stations in {selected_country}" if selected_country != "All" else "🏙️ Top Cities by Number of Stations")
     st.markdown(f"<div class='section-title-purple'>{city_pie_title}</div>", unsafe_allow_html=True)
-    st.plotly_chart(fig_city_pie, use_container_width=True)
+    st.plotly_chart(fig_city_pie, use_container_width=True) 
 
 with col2:
+
+    # Top 5 Networks Pie Chart
+    top_5_networks = df.sort_values("Station Count", ascending=False).head(5)
+    fig_network_pie = px.pie(
+        top_5_networks,
+        names="Network_id",
+        values="Station Count",
+        hole=0.4,
+    )
+    fig_network_pie.update_traces(textinfo='value', pull=[0.05]*5)
+    fig_network_pie.update_layout(height=400, plot_bgcolor="#fdf2e9", paper_bgcolor="#fdf2e9")
+
     network_pie_title = (f"🥇 Top Networks by Number of Stations in {selected_country}" if selected_country != "All" else "🥇 Top Networks by Number of Stations")
     st.markdown(f"<div class='section-title-orange'>{network_pie_title}</div>", unsafe_allow_html=True)
     st.plotly_chart(fig_network_pie, use_container_width=True)
